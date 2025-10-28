@@ -13,14 +13,12 @@
     background: url('../css/bg.jpg') center/cover no-repeat;
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-    margin-bottom: 24px;
-    margin-left: 40px;
-    padding: 100px;
-    width: 100vw;
-    
-    /* Center a full-width element without negative margins */
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto 24px; /* center the box and keep bottom spacing */
+    padding: 60px 40px; /* slightly reduced padding for better fit */
+    max-width: 1200px; /* prevent overflow and keep content aligned with the page */
+    width: calc(100% - 80px);
+    /*box-sizing: border-box;
+    z-index: 2; /* ensure welcome block sits above the hero fade (::after) */
 }
 
 .welcome-message h1,
