@@ -1,4 +1,4 @@
-const words = ['Studios.', 'Media.']; // Words to alternate
+const words = ['Enock', 'eKnock','Cables🤣','Billkay']; // Words to alternate
 let currentWordIndex = 0;
 let currentLetterIndex = 0;
 
@@ -11,7 +11,7 @@ function updateText() {
     if (currentLetterIndex < words[currentWordIndex].length) {
         currentLetterIndex++;
         cursorElement.style.display = 'inline-block';
-        setTimeout(updateText, 150); // Adjust typing speed here
+        setTimeout(updateText, 100); // Adjust typing speed here
     } else {
         cursorElement.style.display = 'none';
         setTimeout(() => {
