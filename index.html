@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypex Studios</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- css styling -->
+    <link rel="stylesheet" href="css/fonts.css"> <!-- font style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="home img/Curve1.png" type="image/png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        // Function to switch between different tabs/sections
+        function openTab(evt, tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+            tabLinks.forEach(link => link.classList.remove('active'));
+
+            // Activate the correct tab content
+            const tabContent = document.getElementById(tabName);
+            if (tabContent) tabContent.classList.add('active');
+
+            // Activate the correct tab button (header or sidebar)
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active');
+            } else {
+                // fallback: activate the first matching tab-link for the tabName
+                tabLinks.forEach(link => {
+                    if (link.getAttribute('href') === '#' + tabName) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }
+    
+        // Function to open product modal with details
+        function openModal(productName, productImage, productDescription) {
+            const modal = document.getElementById('product-modal');
+            modal.style.display = 'flex';
+            // Set modal content
+            document.getElementById('modal-product-name').innerText = productName;
+            document.getElementById('modal-product-image').src = productImage;
+            document.getElementById('modal-product-description').innerText = productDescription;
+        }
+    
+        // Function to close the product modal
+        function closeModal() {
+            document.getElementById('product-modal').style.display = 'none';
+        }
+    
+        // Function to close sidebar after clicking a link
+        function toggleSidebar() {
+            document.getElementById("nav-toggle").checked = false;
+        }
+    
+        // Function to smoothly scroll to services section
+        function scrollToSection() {
+            document.getElementById('services-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <style>
+        @media (min-width: 769px) {
+            #nav-bar {
+                display: none; /* Hide sidebar on wider screens */
+            }
+        }
+        body {
+            padding-top: 80px; /* Add padding equal to the header height */
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom pointer element -->
+    <div class="custom-pointer"></div>
+    <!-- Cursor element -->
+    <div class="cursor"></div>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="home img/Curve1.png" alt="Logo of Hypex Studios, showcasing creativity">
+            </a>
+        </div>
+        <nav>
+            <ul class="header-tabs">
+                <li><a href="#home" class="tab-link" onclick="openTab(event, 'home')">Home</a></li>
+                <li><a href="#products" class="tab-link" onclick="openTab(event, 'products')">Services</a></li>
+                <li><a href="#about" class="tab-link" onclick="openTab(event, 'about')">About</a></li>
+                <li><a href="#reviews" class="tab-link" onclick="openTab(event, 'reviews')">Reviews</a></li>
+                <li><a href="#contact" class="tab-link" onclick="openTab(event, 'contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sidebar for smaller screens -->
+    <!-- Sidebar navigation positioned on the right side with high z-index for overlay -->
+    <div id="nav-bar" style="right: 0; left: auto; z-index: 1002;">
+        <input type="checkbox" id="nav-toggle">
+        <div id="nav-header">
+            <a id="nav-title" href="index.html" target="_blank" style="display: block; text-align: center;">
+                <img src="home img/Curve1.png" alt="Hypex Studios Logo" style="height: 40px; filter: invert(1); margin: 0 auto;">
+            </a>
+            <label for="nav-toggle">
+                <span id="nav-toggle-burger"></span>
+            </label>
+            <hr>
+        </div>
+        <div id="nav-content">
+            <div class="nav-button" onclick="openTab(event, 'home'); toggleSidebar();"><i class="fas fa-palette"></i><span>Home</span></div>
+            <div class="nav-button" onclick="openTab(event, 'products'); toggleSidebar();"><i class="fas fa-images"></i><span>Services</span></div>
+            <div class="nav-button" onclick="openTab(event, 'about'); toggleSidebar();"><i class="fas fa-thumbtack"></i><span>About</span></div>
+            <hr>
+            <div class="nav-button" onclick="openTab(event, 'reviews'); toggleSidebar();"><i class="fas fa-heart"></i><span>Reviews</span></div>
+            <div class="nav-button" onclick="openTab(event, 'contact'); toggleSidebar();"><i class="fas fa-chart-line"></i><span>Contact</span></div>
+            <div id="nav-content-highlight"></div>
+        </div>
+    </div>
+<!-- partial -->   
+    <div id="home" class="tab-content active" role="tabpanel" aria-labelledby="home-tab">
+        <div class="hero">
+            <div>
+                <!-- Welcome message with dynamic text -->
+                <div class="welcome-message scroll-fade-in" style="background-color:#000;">
+                    <h1>Welcome to Hypex</h1>
+                    <p><span id="text-change"></span><span class="cursor-blink"></span></p>
+                </div>
+                                <!-- Link to your JavaScript file -->
+                                <script src="script.js"></script>
+            </div>
+        </div>
+        <!-- From Uiverse.io by Creatlydev -->
+                                <button class="button scroll-fade-in" style="--clr: #7808d0" aria-label="Explore Hypex Studios" onclick="scrollToSection()">
+                                    <span class="button__icon-wrapper" aria-hidden="true">
+                                        <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg" width="10">
+                                            <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
+                                        </svg>
+                                        <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg button__icon-svg--copy">
+                                            <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                    Explore All
+                                </button>
+        <!--Home -->
+        <div id="home" class="tab-content active">
+    
+    <section class="ticker-section">
+        <h2>What We Do</h2>
+        
+        <div class="ticker-wrap ticker-1">
+            <div class="ticker">
+                <span class="ticker-item">UI/UX Design</span>
+                <span class="ticker-item">Web Development</span>
+                <span class="ticker-item">Mobile App Development</span>
+                <span class="ticker-item">Brand Strategy</span>
+                <span class="ticker-item">Content Creation</span>
+                <span class="ticker-item">UI/UX Design</span>
+                <span class="ticker-item">Web Development</span>
+                <span class="ticker-item">Mobile App Development</span>
+                <span class="ticker-item">Brand Strategy</span>
+                <span class="ticker-item">Content Creation</span>
+            </div>
+        </div>
+
+        <div class="ticker-wrap ticker-2">
+            <div class="ticker">
+                <span class="ticker-item">SEO & Marketing</span>
+                <span class="ticker-item">Custom Software</span>
+                <span class="ticker-item">Cloud Solutions</span>
+                <span class="ticker-item">3D Modeling</span>
+                <span class="ticker-item">Motion Graphics</span>
+                <span class="ticker-item">SEO & Marketing</span>
+                <span class="ticker-item">Custom Software</span>
+                <span class="ticker-item">Cloud Solutions</span>
+                <span class="ticker-item">3D Modeling</span>
+                <span class="ticker-item">Motion Graphics</span>
+            </div>
+        </div>
+
+        <div class="ticker-wrap ticker-3">
+            <div class="ticker">
+                <span class="ticker-item">E-commerce Setup</span>
+                <span class="ticker-item">Video Production</span>
+                <span class="ticker-item">Digital Consulting</span>
+                <span class="ticker-item">AR/VR Experiences</span>
+                <span class="ticker-item">API Integration</span>
+                <span class="ticker-item">E-commerce Setup</span>
+                <span class="ticker-item">Video Production</span>
+                <span class="ticker-item">Digital Consulting</span>
+                <span class="ticker-item">AR/VR Experiences</span>
+                <span class="ticker-item">API Integration</span>
+            </div>
+        </div>
+    </section>
+    </div>
+        <section id="services-section">
+            <h2>What We Do</h2>
+            <p>At Hypex Studios, we provide a wide range of creative services tailored to bring your vision to life. Whether you need high-end photography, immersive video production, or creative media consulting, we've got you covered. Our team is dedicated to delivering outstanding results that help your brand connect with its audience.</p>
+        </section>
+        <section class="grid-container">
+            <div class="grid-item">
+                <img src="home img/pmt (1 of 1)j.png" alt="A professional photographer taking a photo in a studio">
+                <h3>We Capture Moments</h3>
+                <p>We specialize in creating stunning visuals that tell your story. From fashion shoots to product photography, our images capture the essence of your brand.</p>
+            </div>
+            <div class="grid-item">
+                <img src="home img/01-Free-Cube-Lightbox-Sign-Mockup.jpg" alt="Creative branding design in progress">
+                <h3>We Create & Uplift Brands</h3>
+                <p>From concept to final cut, our video production services create engaging content that resonates with your audience and elevates your brand.</p>
+            </div>
+            <div class="grid-item">
+                <img src="home img/chosen.jpg" alt="Film equipment and creative movie production set">
+                <h3>We Give Your Brand An Identity</h3>
+                <p>We specialize in creating stunning visuals that tell your story. From fashion shoots to product photography, our images capture the essence of your brand.</p>
+            </div>
+            <div class="grid-item">
+                <img src="home img/not-today-satan-front.jpg" alt="A modern and stylish branding design">
+                <h3>We Style</h3>
+                <p>Our design team helps you create a brand identity that connects emotionally with your audience, setting you apart from the competition.</p>
+            </div>
+        </section>
+        <!-- Carousel Section Start -->
+    <section class="custom-carousel-section">
+    <div class="carousel-bg" style="background: url('home img/1.jpeg') center/cover no-repeat fixed;">
+            <div class="carousel-content">
+                <div class="carousel-headings">
+                    <h3 style="color:rgb(240, 109, 53);font-size:24px;margin-bottom:0;">What are we...</h3>
+                    <h2 style="color:#fff;font-size:80px;text-shadow:5px 5px 10px rgba(0,0,0,0.2);margin:0;">Not Just The Best, We Are The Standard</h2>
+                </div>
+                <div class="carousel-vertical">
+                    <button class="carousel-arrow up" aria-label="Previous">&#9650;</button>
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="https://happyaddons.com/wp-content/uploads/2019/07/carousel6.jpg" alt="carousel 1"></div>
+                        <div class="carousel-slide"><img src="https://happyaddons.com/wp-content/uploads/2019/07/carousel8.jpg" alt="carousel 2"></div>
+                        <div class="carousel-slide"><img src="https://happyaddons.com/wp-content/uploads/2019/07/carousel3.jpg" alt="carousel 3"></div>
+                        <div class="carousel-slide"><img src="https://happyaddons.com/wp-content/uploads/2019/07/carousel9.jpg" alt="carousel 4"></div>
+                        <div class="carousel-slide"><img src="https://happyaddons.com/wp-content/uploads/2019/07/carousel11.jpg" alt="carousel 5"></div>
+                    </div>
+                    <button class="carousel-arrow down" aria-label="Next">&#9660;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Carousel Section End -->
+    </div>
+    
+    
+    <!-- client review -->
+    <div id="reviews" class="tab-content" role="tabpanel" aria-labelledby="reviews-tab">
+        <h2>What Our Clients Say</h2>
+        <div class="reviews-container">
+            <div class="review-item">
+                <div class="reviewer-image">
+                    <img src="review imgs/st.jpg" alt="Photo of reviewer John Doe">
+                </div>
+                <h3>Danny Keyz</h3>
+                <p>"The team at Hypex Studios brought our vision to life with exceptional quality. We are thrilled with the results and highly recommend their services!"</p>
+                <div class="stars" aria-label="5-star review">
+                    <i>★</i><i>★</i><i>★</i><i>★</i><i>★</i>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="reviewer-image">
+                    <img src="review imgs/51397684.jpg" alt="Photo of reviewer Sarah Smith">
+                </div>
+                <h3>Kwame A-Plus</h3>
+                <p>"Hypex Studios exceeded our expectations in every way. Their creative approach and attention to detail made all the difference."</p>
+                <div class="stars" aria-label="4-star review">
+                    <i>★</i><i>★</i><i>★</i>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="reviewer-image">
+                    <img src="review imgs/Ursula-Owusu-Ekuful-1.jpg" alt="Photo of reviewer Sarah Smith">
+                    </div>
+                    <h3>Lady Gaga</h3>
+                    <p>"Hypex Studios gave my brand an identity. We are now one of the best and most trustworthy brands to work with."</p>
+                    <div class="stars" aria-label="5-star review">
+                        <i>★</i><i>★</i><i>★</i><i>★</i><i>★</i>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- about -->
+    <div id="about" class="tab-content" role="tabpanel" aria-labelledby="about-tab">
+        <div class="about-section">
+            <div class="about-hero">
+                <h1>About Hypex Studios</h1>
+            </div>
+            <div class="container">
+                <!-- About Section -->
+                <section class="about-section">
+                    <h2>Who We Are</h2>
+                    <p>
+                        Hypex Studios is a dynamic and innovative platform dedicated to transforming ideas into creative solutions. Our mission is to redefine the boundaries of creativity, ensuring authenticity and excellence in everything we do.
+                    </p>
+                </section>
+                <!-- Core Values Section -->
+                <section class="values-section">
+                    <h2>Our Core Values</h2>
+                    <div class="values-container">
+                        <div class="value-item">
+                            <h3>Creativity</h3>
+                            <p>We embrace bold and original ideas to create extraordinary outcomes.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>Authenticity</h3>
+                            <p>Our work reflects genuine passion and integrity, ensuring a lasting impact.</p>
+                        </div>
+                        <div class="value-item">
+                            <h3>Excellence</h3>
+                            <p>We strive to exceed expectations in every project we undertake.</p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Team Section -->
+                <section class="team-section">
+                    <h2>Meet Our Team</h2>
+                    <div class="team-container">
+                        <div class="team-member">
+                            <img src="review imgs/st.jpg" alt="Team Member 1">
+                            <h3>Bill Kay</h3>
+                            <p>CEO & Founder</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="review imgs/st.jpg" alt="Team Member 2">
+                            <h3>Edward Amoah</h3>
+                            <p>Creative Director</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="review imgs/Layer 1.png" alt="Team Member 3">
+                            <h3>Enock Tetteh</h3>
+                            <p>Lead Designer</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Services -->
+    <div id="products" class="tab-content" role="tabpanel" aria-labelledby="products-tab">
+        <div class="products-section">
+            <h2>Our Services</h2>
+            <p>At Hypex Studios, we combine creativity with technology to craft powerful media that inspires. Explore our wide range of services below:</p>
+            <section class="product-section">
+                <div class="product-grid">
+                    <!-- Service 1 -->
+                    <div class="product-item">
+                        <img src="Servicesimg/hyp.jpg" alt="Logo Concept Creation">
+                        <h3>Logo Concept Creation</h3>
+                        <p>We design high-quality logos that represent your brand's identity and vision.</p>
+                        <button onclick="openModal('Logo Concept Creation', 'Servicesimg/hyp.jpg', 'Our team crafts unique, memorable logos tailored to your business, ensuring your brand stands out in the market.')">Learn More</button>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="product-item">
+                        <img src="Servicesimg/flyer.jpg" alt="Graphics Design">
+                        <h3>Graphics Design</h3>
+                        <p>Creative and innovative designs tailored to your needs, from flyers to banners.</p>
+                        <button onclick="openModal('Graphics Design', 'Servicesimg/flyer.jpg', 'We deliver eye-catching graphics for print and digital media, helping your brand communicate effectively.')">Learn More</button>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="product-item">
+                        <img src="Servicesimg/vidiography.jpg" alt="Videography">
+                        <h3>Videography</h3>
+                        <p>Professional video production to bring your vision to life.</p>
+                        <button onclick="openModal('Videography', 'Servicesimg/vidiography.jpg', 'From commercials to documentaries, our videography team captures your story with cinematic quality.')">Learn More</button>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="product-item">
+                        <img src="Servicesimg/pmt (1 of 1)j.png" alt="Photography">
+                        <h3>Photography</h3>
+                        <p>Capture stunning visuals that tell your story and elevate your brand.</p>
+                        <button onclick="openModal('Photography', 'Servicesimg/pmt (1 of 1)j.png', 'Our photographers specialize in portraits, events, products, and more, delivering high-resolution images.')">Learn More</button>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="product-item">
+                        <img src="Servicesimg/wa.jpg" alt="Training Programs">
+                        <h3>Training Programs</h3>
+                        <p>Empowering individuals with skills in media, design, and creative arts.</p>
+                        <button onclick="openModal('Training Programs', 'Servicesimg/wa.jpg', 'Join our workshops and courses to learn photography, design, video editing, and more from industry experts.')">Learn More</button>
+                    </div>
+                    <!-- Service 6 -->
+                    <div class="product-item">
+                        <img src="Servicesimg/set.jpg" alt="Set Designing">
+                        <h3>Set Designing</h3>
+                        <p>Immersive set designs tailored for your creative projects and productions.</p>
+                        <button onclick="openModal('Set Designing', 'Servicesimg/set.jpg', 'We create custom sets for photo shoots, video productions, and events, ensuring a unique visual experience.')">Learn More</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Service Modal -->
+        <div id="product-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
+                <img id="modal-product-image" src="" alt="Service Image">
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-description"></p>
+            </div>
+        </div>
+    </div>
+    <!-- contact -->
+    <div id="contact" class="tab-content" role="tabpanel" aria-labelledby="contact-tab">
+        <section class="contact-section-widget">
+            <div class="contact-overlay"></div>
+            <div class="contact-container-widget">
+                <div class="contact-column contact-info-widget">
+                    <h1 class="contact-title-widget">Contact Us</h1>
+                    <p class="contact-desc-widget">
+                        We'd love to hear from you! Whether you have a question about our services, need assistance, or want to collaborate, feel free to reach out.
+                    </p>
+                    <div class="contact-divider-widget"></div>
+                    <h2 class="contact-subtitle-widget">Head Quarter</h2>
+                    <p class="contact-details-widget">
+                        123 Creative Avenue, Suite 456<br>
+                        Innovation City, IM 78910<br>
+                        Phone: <a href="tel:+233207280318">+233 207280318</a><br>
+                        Email: <a href="mailto:info@hypexstudios.com">info@hypexstudios.com</a>
+                    </p>
+                </div>
+                <div class="contact-column contact-form-widget">
+                    <form action="https://formspree.io/f/mbljvjlj" method="POST" class="contact-form" aria-label="Contact Form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your Full Name" required aria-required="true">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email Address" required aria-required="true">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" placeholder="Type your message here..." rows="5" required aria-required="true"></textarea>
+                        <input type="hidden" name="_redirect" value="https://yourwebsite.com/thank-you.html">
+                        <button type="submit" aria-label="Submit Contact Form">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Custom Footer Start -->
+    <footer class="custom-footer-widget">
+        <div class="footer-overlay"></div>
+        <div class="footer-main">
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact-list">
+                        <li><span class="footer-icon">&#9993;</span> tettehbabyboy@.com</li>
+                        <li><span class="footer-icon">&#128222;</span> +233 207280318</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="tab-link" onclick="openTab(event, 'about')">About Us</a></li>
+                        <li><a href="#contact" class="tab-link" onclick="openTab(event, 'contact')">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Social</h3>
+                    <div class="footer-social-icons">
+                        <a href="https://instagram.com/hypex_studios/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <img src="home img/Curve1.png" alt="Logo" style="filter: invert(1);" />
+                </div>
+                <div class="footer-copyright">
+                    © Copyright 2025 hypex Studios. All right reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Custom Footer End -->
+     <div id="ai-chat-container">
+    <button id="ai-chat-toggle" class="button">
+        <i class="fas fa-robot"></i> AI Assistant
+    </button>
+    <div id="ai-chat-window" class="hidden">
+        <div class="chat-header">Hypex AI Assistant</div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">Hello! I'm the Hypex AI Assistant. How can I help you today?</div>
+        </div>
+        <input type="text" id="chat-input" placeholder="Ask a question..." />
+        <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
