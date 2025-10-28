@@ -691,9 +691,6 @@ section {
             transition: background-color 0.3s ease, box-shadow 0.3s;
         }
     }
-        padding: 8px 14px;
-        bottom: 12px;
-    }
 
     .grid-container {
         grid-template-columns: 1fr;
@@ -928,13 +925,7 @@ section {
     z-index: 1;
     animation: fadeIn 1.5s ease-in-out;
 }
-        /* Optimized styling for the welcome message container */
-.welcome-message-container {
-    background: url('../css/bg.jpg') center/cover no-repeat;
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
+    /* Optimized styling for the welcome message container (empty on purpose) */
 
 /* Remove any solid background color if present */
 @keyframes fadeIn {
@@ -1214,12 +1205,25 @@ html, body {
     border-radius: 16px;
     display: flex;
     flex-direction: column;
+
+    /* ensure nav content stacks correctly */
     color: var(--navbar-light-primary);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     overflow: hidden;
     user-select: none;
     z-index: 1002; /* Ensure the sidebar is in front */
 }
+
+/* Hide the last 5 sidebar icons when the nav is collapsed */
+#nav-toggle:checked ~ #nav-content .nav-buttons .nav-button:nth-last-child(-n+5) {
+    display: none;
+}
+
+/* Smoothly collapse labels/icons behavior */
+#nav-toggle:checked ~ #nav-content .nav-buttons .nav-button {
+    transition: opacity .15s, width .15s, padding .15s;
+}
+ 
 
 #nav-bar hr {
     margin: 0;
@@ -1497,11 +1501,6 @@ label[for="nav-toggle"] {
     min-height: 54px;
 }
 
-    background: url('../css/bg.jpg') center/cover no-repeat;
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
 
 label[for="nav-footer-toggle"] {
     position: absolute;
