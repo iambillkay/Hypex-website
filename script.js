@@ -32,6 +32,54 @@ document.addEventListener('mousemove', (e) => {
     cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 });
 
+// --- AI chat behavior: toggle window, send messages, simple placeholder reply ---
+document.addEventListener('DOMContentLoaded', () => {
+    const aiToggle = document.getElementById('ai-chat-toggle');
+    const aiWindow = document.getElementById('ai-chat-window');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+
+    if (!aiToggle || !aiWindow || !chatMessages) return; // elements missing
+
+    aiToggle.addEventListener('click', () => {
+        aiWindow.classList.toggle('hidden');
+        if (!aiWindow.classList.contains('hidden')) {
+            // focus the input when opened
+            setTimeout(() => chatInput?.focus(), 120);
+        }
+    });
+
+    function appendMessage(text, cls) {
+        const m = document.createElement('div');
+        m.className = `message ${cls}`;
+        m.textContent = text;
+        chatMessages.appendChild(m);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+        if (!chatInput) return;
+        const text = chatInput.value.trim();
+        if (!text) return;
+        appendMessage(text, 'user-message');
+        chatInput.value = '';
+
+        // Placeholder bot reply — replace with real API call later
+        setTimeout(() => {
+            appendMessage(`Thanks — I received: ${text}`, 'bot-message');
+        }, 700);
+    }
+
+    chatSend?.addEventListener('click', sendMessage);
+    chatInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+});
+
 // Custom Style Mouse Pointer
 const customPointer = document.createElement('div');
 customPointer.classList.add('custom-pointer');
