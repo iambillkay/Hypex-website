@@ -309,7 +309,7 @@ footer .social-icons a:hover {
 /* Grid Layout and Image Categories */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* two items per row on default/medium+ screens */
     gap: 20px;
     margin-top: 20px;
     opacity: 0;
@@ -330,6 +330,13 @@ footer .social-icons a:hover {
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 15px;
+}
+
+/* Responsive: single column on small screens */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* single column */
+    }
 }
 
 /* Fade-in animations */
