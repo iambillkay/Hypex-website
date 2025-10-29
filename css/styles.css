@@ -2577,19 +2577,20 @@ html, body {
 		--clr-cta: rgb(0, 132, 209);
 
 		position: relative;
+        margin: 0 auto;
 		width: var(--carousel-width);
 		height: var(--carousel-item-height);
 		overflow: clip;
 
 		&[mask] {
-			/* fade out on sides */
-			mask-image: linear-gradient(
-				to right,
-				transparent,
-				black 10% 90%,
-				transparent
-			);
-		}
+    /* fade out on sides */
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5% 95%, /* Correct: Use black for 100% visibility, symmetric stops for centering */
+        transparent
+    );
+}
 
 		&[reverse] > article {
 			animation-direction: reverse;
