@@ -1131,7 +1131,7 @@ section {
     }
 }
 
-/* button for sidebar and color for side bar */
+/* for the entire image */
 
 :root {
     --background: #000000;
@@ -1763,116 +1763,6 @@ label[for="nav-footer-toggle"] {
 }
 
 /* Custom Carousel Section */
-.custom-carousel-section {
-    width: 100%;
-    padding: 50px 0;
-    color: white;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel-bg {
-    /* background is set via inline style in HTML */
-    width: 100%;
-    min-height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 0;
-}
-
-.carousel-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.carousel-headings {
-    text-align: left;
-    flex: 1;
-    padding-right: 20px;
-}
-
-.carousel-headings h2 {
-    font-size: 80px;
-    text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
-    margin: 0;
-}
-
-.carousel-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 220px;
-    position: relative;
-}
-
-.carousel-arrow {
-    background: none;
-    border: none;
-    font-size: 32px;
-    color: rgba(36,36,36,0.3);
-    cursor: pointer;
-    padding: 8px;
-    transition: color 0.3s;
-}
-
-.carousel-arrow:hover {
-    color: #242424;
-}
-
-.carousel-track {
-    overflow: hidden;
-    position: relative;
-    height: 480px;
-    width: 340px;
-    transition: none;
-}
-
-.carousel-slide {
-    position: relative;
-    width: 100%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    height: 460px;
-    margin: 10px 0;
-    opacity: 1;
-    transition: opacity 0.4s;
-}
-
-.carousel-slide.fade-in {
-    animation: carouselFadeIn 0.4s;
-}
-
-.carousel-slide.fade-out {
-    animation: carouselFadeOut 0.4s;
-}
-
-@keyframes carouselFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes carouselFadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 18px;
-    z-index: 3; /* ensure welcome block sits above hero fade */
-}
-
 @media (max-width: 900px) {
     .carousel-bg {
         min-height: 400px;
@@ -1896,19 +1786,7 @@ label[for="nav-footer-toggle"] {
         align-items: center;
         margin-top: 15px;
     }
-    .carousel-arrow {
-        margin: 0 10px;
-    }
-    .carousel-track {
-        height: 300px;
-        width: 220px;
-    }
-    .carousel-slide {
-        height: 280px;
-    }
-    .carousel-slide img {
-        border-radius: 14px;
-    }
+    
 }
 
 @media (max-width: 600px) {
