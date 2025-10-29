@@ -1763,10 +1763,28 @@ label[for="nav-footer-toggle"] {
 }
 
 /* Custom Carousel Section */
+.carousel-bg {
+    min-height: 600px; /* Base height for large screens */
+    padding: 40px 0;
+     border-radius: 15px;
+}
+.carousel-content {
+    display: flex; /* Assuming a horizontal layout on desktop */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Keep content contained */
+    margin: 0 auto; /* Center the content */
+}
+.carousel-track {
+    /* Base for the track on large screens */
+    width: 50%;
+    height: 300px;
+}
 @media (max-width: 900px) {
     .carousel-bg {
         min-height: 400px;
         padding: 20px 0;
+        border-radius: 15px;
     }
     .carousel-content {
         flex-direction: column;
@@ -1777,7 +1795,7 @@ label[for="nav-footer-toggle"] {
         margin-bottom: 20px;
     }
     .carousel-headings h2 {
-        font-size: 36px;
+        font-size: clamp(2.2rem, 4vw, 3rem);
     }
     .carousel-vertical {
         width: 100%;
@@ -1793,9 +1811,10 @@ label[for="nav-footer-toggle"] {
     .carousel-bg {
         min-height: 160px;
         padding: 10px 0;
+        border-radius: 10px; /* Smaller radius for smaller screens */
     }
     .carousel-headings h2 {
-        font-size: 22px;
+        font-size: clamp(2.2rem, 4vw, 3rem);
     }
     .carousel-track {
         height: 160px;
