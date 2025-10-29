@@ -2282,7 +2282,6 @@ html, body {
 @media (max-width: 600px) {
     .ticker-section h2 {
         font-size: 28px;
-        margin: 20px;
         text-align: center;
     }
 }
